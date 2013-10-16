@@ -1,0 +1,5 @@
+line one
+stuff and $CommitInfo: Tue Oct 15 21:05:06 2013 -0400 e79abf5eb59f4a77c3a735860b8981b5fffdb1b7 testing expansion in git$junk
+line three
+other stuff and $More$ junk
+line five

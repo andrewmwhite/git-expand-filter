@@ -1,0 +1,5 @@
+line one
+stuff and $CommitInfo: Tue Oct 15 22:23:03 2013 -0400 d4c0c8f09583b06a0604ce16e39819666fc77f06 add source files$junk
+line three
+other stuff and $More: Here's even more!$ junk
+line five

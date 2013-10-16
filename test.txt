@@ -1,0 +1,5 @@
+line one
+stuff and $CommitInfo$junk
+line three
+other stuff and $More$ junk
+line five
