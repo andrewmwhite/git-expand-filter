@@ -25,19 +25,23 @@ def smudge(args):
         replacements[key] = value
       f.close()
 
-  #print("smudging...", file=sys.stderr)
-  #print("replacements: {!s}".format(replacements), file=sys.stderr)
+  if args.debug:
+    print("smudging...", file=sys.stderr)
+    print("replacements: {!s}".format(replacements), file=sys.stderr)
 
   def repl(m):
     return """${:s}: {!s}$""".format(m.group(1), replacements[m.group(1)])
 
   pattern = """\$({:s})\$""".format('|'.join(replacements.keys()))
 
-  #print("pattern: {:s}".format(pattern), file=sys.stderr)
+  if args.debug:
+    print("pattern: {:s}".format(pattern), file=sys.stderr)
+
   print(re.sub(pattern, repl, sys.stdin.read()), end='')
 
 def clean(args):
-  #print("cleaning...", file=sys.stderr)
+  if args.debug:
+    print("cleaning...", file=sys.stderr)
   pattern     = """\$([^:]+): [^\$]*\$"""
   replacement = """$\g<1>$"""
   print(re.sub(pattern, replacement, sys.stdin.read()), end='')
@@ -45,6 +49,10 @@ def clean(args):
 if __name__ == "__main__":
   parser = argparse.ArgumentParser(\
       description="""Smudge and clean scripts for git.""")
+
+  parser.add_argument("--debug", dest="debug", action="store_true", \
+    default=False)
+
   subparsers = parser.add_subparsers()
 
   parser_smudge = subparsers.add_parser('smudge')
